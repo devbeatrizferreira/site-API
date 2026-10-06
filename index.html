@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de Frete Moto</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <span>🏍️</span>
+                FreteMoto
+            </div>
+
+            <button id="themeButton" class="theme-button">
+                🌙
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="container hero-content">
+
+                <div class="hero-text">
+                    <span class="badge">ENTREGA RÁPIDA</span>
+
+                    <h1>
+                        Calcule seu frete
+                        <strong>em segundos.</strong>
+                    </h1>
+
+                    <p>
+                        Informe seu CEP e descubra a distância,
+                        o tempo estimado e o valor aproximado
+                        da entrega de moto saindo da UNINASSAU.
+                    </p>
+                </div>
+
+                <div class="calculator-card">
+
+                    <h2>Calcular frete</h2>
+
+                    <p class="subtitle">
+                        Digite o CEP do local de entrega.
+                    </p>
+
+                    <form id="freteForm">
+
+                        <label for="cep">
+                            CEP
+                        </label>
+
+                        <div class="cep-input">
+                            <input
+                                type="text"
+                                id="cep"
+                                placeholder="Ex.: 60000-000"
+                                maxlength="9"
+                                required
+                            >
+
+                            <button type="submit">
+                                Calcular
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <div id="loading" class="loading hidden">
+                        <div class="spinner"></div>
+                        Calculando rota...
+                    </div>
+
+                    <div id="error" class="error hidden"></div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="resultado" class="result-section hidden">
+
+            <div class="container">
+
+                <div class="section-title">
+                    <span>RESULTADO</span>
+                    <h2>Seu frete estimado</h2>
+                </div>
+
+                <div class="result-grid">
+
+                    <div class="result-card">
+
+                        <div class="result-icon">
+                            📍
+                        </div>
+
+                        <div>
+                            <span>Destino</span>
+                            <strong id="endereco">
+                                -
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <div class="result-icon">
+                            🛣️
+                        </div>
+
+                        <div>
+                            <span>Distância</span>
+                            <strong id="distancia">
+                                -
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <div class="result-icon">
+                            ⏱️
+                        </div>
+
+                        <div>
+                            <span>Tempo estimado</span>
+                            <strong id="tempo">
+                                -
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-card price-card">
+
+                        <div class="result-icon">
+                            💰
+                        </div>
+
+                        <div>
+                            <span>Frete estimado</span>
+                            <strong id="preco">
+                                R$ 0,00
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="calculation">
+
+                    <h3>
+                        Como calculamos?
+                    </h3>
+
+                    <div class="calculation-row">
+                        <span>Tarifa inicial</span>
+                        <strong id="tarifaBase">R$ 4,00</strong>
+                    </div>
+
+                    <div class="calculation-row">
+                        <span>Distância</span>
+                        <strong id="valorDistancia">R$ 0,00</strong>
+                    </div>
+
+                    <div class="calculation-row total">
+                        <span>Total estimado</span>
+                        <strong id="valorTotal">R$ 0,00</strong>
+                    </div>
+
+                    <p class="disclaimer">
+                        * Valor estimado para fins de demonstração.
+                        Não representa necessariamente o preço oficial
+                        de uma corrida Uber Moto.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="how-it-works">
+
+            <div class="container">
+
+                <div class="section-title">
+                    <span>COMO FUNCIONA</span>
+                    <h2>Simples e rápido</h2>
+                </div>
+
+
+                <div class="steps">
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Informe o CEP
+                        </h3>
+
+                        <p>
+                            Digite o CEP do endereço onde
+                            a entrega será realizada.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Encontramos o endereço
+                        </h3>
+
+                        <p>
+                            A API ViaCEP localiza automaticamente
+                            os dados do endereço.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Calculamos a rota
+                        </h3>
+
+                        <p>
+                            O sistema calcula a distância entre
+                            a UNINASSAU e o destino.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Você vê o preço
+                        </h3>
+
+                        <p>
+                            O sistema apresenta uma estimativa
+                            do valor do frete.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="container footer-content">
+
+            <div>
+                <strong>🏍️ FreteMoto</strong>
+
+                <p>
+                    Calculadora de frete utilizando APIs públicas.
+                </p>
+            </div>
+
+            <div>
+                <p>
+                    Origem:
+                    <strong>UNINASSAU Fortaleza</strong>
+                </p>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
